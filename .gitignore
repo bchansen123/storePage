@@ -2,3 +2,12 @@
 node_modules
 npm-debug.log
 .env
+index1.handlebars
+views/example.handlebars
+config/config.json
+models/schema.sql
+package-lock.json
+routes/apiRoutes.js
+routes/htmlRoutes.js
+server.js
+views/layouts/main.handlebars
