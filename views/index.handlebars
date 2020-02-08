@@ -1,33 +1,312 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+{{!-- Main Page Layout --}}
+<section class="hero is-small is-dark">
+  <div class="hero-body">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="logo">
+          <a class="image" href="/"><img src="https://via.placeholder.com/175x125" id="logo" alt="Logo"></a>
+        </div>
+      </div>
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          {{!-- <div class="navbar-item is-expanded">
+            <div class="field is-grouped">
+              <div class="control has-icons-left">
+                <input class="input is-link" id="search_input" type="text" placeholder="Search..">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+              <button class="button is-link">
+                <span>Search</span>
+              </button>
+            </div>
+          </div> --}}
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <button class="button is-link is-light is-medium" id="modal_launch">Login</button>
+              </p>
+              <p class="control">
+                <button class="button is-link is-medium" id="signup_modal">Signup</button>
+              </p>
+              <p class="control">
+                <button class="button is-dark is-medium">
+                  <span class="icon is-medium has-text-grey-lighter">
+                    <i class="fas fa-2x fa-shopping-cart"></i>
+                  </span>
+                </button>
+              </p>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-start">
+    <a class="navbar-item" href="/">
+      Home
+    </a>
+    <a class="navbar-item" href="">
+      Electronics
+    </a>
+    <a class="navbar-item" href="">
+      Grocery
+    </a>
+    <a class="navbar-item" href="">
+      Clothing
+    </a>
+    <a class="navbar-item" href="">
+      Outdoors
+    </a>
+    <a class="navbar-item" href="">
+      Automotive
+    </a>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item is-expanded">
+      <div class="field is-grouped">
+        <div class="control has-icons-left">
+          <input class="input is-link" id="search_input" type="text" placeholder="Search..">
+          <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+        <button class="button is-link">
+          <span>Search</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<br>
+<div class='container'>
+  <h1 class="title">Todays Highlights</h1>
+  <div class="tile is-ancestor has-bg-img">
+    <div class="tile is-vertical is-3">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child box">
+            <p class="title" id="product1">Product 1</p>
+            <a href="/"><img src="https://via.placeholder.com/300"></a>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="tile is-vertical is-3">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <p class="title" id="product2">Product 2</p>
+          <a href="/"><img src="https://via.placeholder.com/300"></a>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-vertical is-3">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <p class="title" id="product3">Product 3</p>
+          <a href="/"><img src="https://via.placeholder.com/300"></a>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-vertical is-3">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <p class="title" id="product4">Product 4</p>
+          <a href="/"><img src="https://via.placeholder.com/300"></a>
+        </article>
       </div>
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+{{!-- Login Modal --}}
+<div class="modal login_modal login">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title is-size-3 has-text-weight-bold">Sign In</p>
+      <button class="delete" id="cancel" aria-label="close"></button>
+    </header>
+    <div class="tile is-ancestor box">
+      <div class="tile is-parent is-vertical box">
+        <p>Username</p>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input is-link" type="email" id="login_user" placeholder="Enter your Username..">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </p>
+        </div>
+        <p>Password</p>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input is-link" type="password" id="login_password" placeholder="Enter your Password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-key"></i>
+            </span>
+          </p>
+        </div>
+        <div class="columns">
+          <div class="column is-10"></div>
+          <div class="column is-2">
+            <button class="button is-link" id="submit_credentials">Login</button>
+          </div>
+        </div>
+        <hr>
+        <div class="alt_signin">
+          <h1 class="is-size-4 has-text-weight-bold">...Or sign in using a platform below</h1>
+        </div>
+        <div class="columns is-centered">
+          <div class="field">
+            <p class="buttons">
+              <button class="button is-link">
+                <span class="icon is-medium">
+                  <i class="fab fa-google"></i>
+                </span>
+                <span>Sign in with Google</span>
+              </button>
+            </p>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="field">
+            <p class="buttons">
+              <button class="button is-link" id="facebook_color">
+                <span class="icon is-medium">
+                  <i class="fab fa-facebook"></i>
+                </span>
+                <span>Sign in with Facebook</span>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Sign Up Modal --}}
+<div class="modal signup_modal signup">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title is-size-3 has-text-weight-bold">Sign Up</p>
+      <button class="delete" id="cancel_newuser" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="tile is-ancestor box">
+        <div class="tile is-12">
+          <div class="tile is-parent">
+            <div class="tile is-child box">
+              <p>Email</p>
+              <div class="field">
+                <input class="input is-link" type="text" id="new_email" placeholder="Email..">
+              </div>
+              <p>Password</p>
+              <div class="field">
+                <input class="input is-link" type="password" id="new_password" placeholder="Password..">
+              </div>
+              <div class="columns">
+                <div class="column is-6">
+                  <p>First Name</p>
+                  <div class="field">
+                    <input class="input is-link" type="text" id="first_name" placeholder="First Name..">
+                  </div>
+                </div>
+                <div class="column is-6">
+                  <p>Last Name</p>
+                  <div class="field">
+                    <input class="input is-link" type="text" id="last_name" placeholder="Last Name..">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <p>Address</p>
+                <input class="input is-link" type="text" id="new_address" placeholder="Address..">
+              </div>
+              <div class="columns">
+                <div class="column is-4">
+                  <p>City</p>
+                  <input class="input is-link" type="text" id="new_city" placeholder="City..">
+                </div>
+                <div class="column is-4">
+                  <p>State</p>
+                  <input class="input is-link" type="text" id="new_state" placeholder="State..">
+                </div>
+                <div class="column is-4">
+                  <p>Zip Code</p>
+                  <input class="input is-link" type="text" id="new_zip_code" placeholder="Zip Code..">
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column is-9"></div>
+                <div class="column is-3 has-text-right">
+                  <button class="button is-link" id="submit_newUser">Sign Up</button>
+                </div>
+              </div>
+              <hr>
+              <div class="alt_signin">
+                <h1 class="is-size-4 has-text-weight-bold">...Or sign in using a platform below</h1>
+              </div>
+              <div class="columns is-centered">
+                <div class="field">
+                  <p class="buttons">
+                    <button class="button is-link">
+                      <span class="icon is-medium">
+                        <i class="fab fa-google"></i>
+                      </span>
+                      <span>Sign in with Google</span>
+                    </button>
+                  </p>
+                </div>
+              </div>
+              <div class="columns is-centered">
+                <div class="field">
+                  <p class="buttons">
+                    <button class="button is-link" id="facebook_color">
+                      <span class="icon is-medium">
+                        <i class="fab fa-facebook"></i>
+                      </span>
+                      <span>Sign in with Facebook</span>
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{{!-- Dependencies --}}
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+{{!-- Javascript to open modals --}}
+<script>
+  $("#modal_launch").click(function () {
+    $(".login").addClass("is-active");
+  });
+
+  $("#cancel").click(function () {
+    $(".login").removeClass("is-active");
+  });
+
+  $("#signup_modal").click(function () {
+    $(".signup").addClass("is-active");
+  });
+
+  $("#cancel_newuser").click(function () {
+    $(".signup").removeClass("is-active");
+  });
+</script>
