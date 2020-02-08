@@ -53,19 +53,19 @@
       Home
     </a>
     <a class="navbar-item" href="">
-      Category 1
+      Electronics
     </a>
     <a class="navbar-item" href="">
-      Category 2
+      Grocery
     </a>
     <a class="navbar-item" href="">
-      Category 3
+      Clothing
     </a>
     <a class="navbar-item" href="">
-      Category 4
+      Outdoors
     </a>
     <a class="navbar-item" href="">
-      Category 5
+      Automotive
     </a>
   </div>
   <div class="navbar-end">
@@ -200,60 +200,90 @@
       <p class="modal-card-title is-size-3 has-text-weight-bold">Sign Up</p>
       <button class="delete" id="cancel_newuser" aria-label="close"></button>
     </header>
-    <div class="tile is-ancestor box">
-      <div class="tile is-12">
-        <div class="tile is-parent">
-          <div class="tile is-child box">
-            <p>Email</p>
-            <div class="field">
-              <input class="input is-link" type="text" id="new_email" placeholder="Email..">
-            </div>
-            <p>Password</p>
-            <div class="field">
-              <input class="input is-link" type="password" id="new_password" placeholder="Password..">
-            </div>
-            <div class="columns">
-              <div class="column is-6">
-                <p>First Name</p>
-                <div class="field">
-                  <input class="input is-link" type="text" id="first_name" placeholder="First Name..">
+    <section class="modal-card-body">
+      <div class="tile is-ancestor box">
+        <div class="tile is-12">
+          <div class="tile is-parent">
+            <div class="tile is-child box">
+              <p>Email</p>
+              <div class="field">
+                <input class="input is-link" type="text" id="new_email" placeholder="Email..">
+              </div>
+              <p>Password</p>
+              <div class="field">
+                <input class="input is-link" type="password" id="new_password" placeholder="Password..">
+              </div>
+              <div class="columns">
+                <div class="column is-6">
+                  <p>First Name</p>
+                  <div class="field">
+                    <input class="input is-link" type="text" id="first_name" placeholder="First Name..">
+                  </div>
+                </div>
+                <div class="column is-6">
+                  <p>Last Name</p>
+                  <div class="field">
+                    <input class="input is-link" type="text" id="last_name" placeholder="Last Name..">
+                  </div>
                 </div>
               </div>
-              <div class="column is-6">
-                <p>Last Name</p>
-                <div class="field">
-                  <input class="input is-link" type="text" id="last_name" placeholder="Last Name..">
+              <div class="field">
+                <p>Address</p>
+                <input class="input is-link" type="text" id="new_address" placeholder="Address..">
+              </div>
+              <div class="columns">
+                <div class="column is-4">
+                  <p>City</p>
+                  <input class="input is-link" type="text" id="new_city" placeholder="City..">
+                </div>
+                <div class="column is-4">
+                  <p>State</p>
+                  <input class="input is-link" type="text" id="new_state" placeholder="State..">
+                </div>
+                <div class="column is-4">
+                  <p>Zip Code</p>
+                  <input class="input is-link" type="text" id="new_zip_code" placeholder="Zip Code..">
                 </div>
               </div>
-            </div>
-            <div class="field">
-              <p>Address</p>
-              <input class="input is-link" type="text" id="new_address" placeholder="Address..">
-            </div>
-            <div class="columns">
-              <div class="column is-4">
-                <p>City</p>
-                <input class="input is-link" type="text" id="new_city" placeholder="City..">
+              <div class="columns">
+                <div class="column is-9"></div>
+                <div class="column is-3 has-text-right">
+                  <button class="button is-link" id="submit_newUser">Sign Up</button>
+                </div>
               </div>
-              <div class="column is-4">
-                <p>State</p>
-                <input class="input is-link" type="text" id="new_state" placeholder="State..">
+              <hr>
+              <div class="alt_signin">
+                <h1 class="is-size-4 has-text-weight-bold">...Or sign in using a platform below</h1>
               </div>
-              <div class="column is-4">
-                <p>Zip Code</p>
-                <input class="input is-link" type="text" id="new_zip_code" placeholder="Zip Code..">
+              <div class="columns is-centered">
+                <div class="field">
+                  <p class="buttons">
+                    <button class="button is-link">
+                      <span class="icon is-medium">
+                        <i class="fab fa-google"></i>
+                      </span>
+                      <span>Sign in with Google</span>
+                    </button>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="columns">
-              <div class="column is-10"></div>
-              <div class="column is-2">
-                <button class="button is-link" id="submit_newUser">Sign Up</button>
+              <div class="columns is-centered">
+                <div class="field">
+                  <p class="buttons">
+                    <button class="button is-link" id="facebook_color">
+                      <span class="icon is-medium">
+                        <i class="fab fa-facebook"></i>
+                      </span>
+                      <span>Sign in with Facebook</span>
+                    </button>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
