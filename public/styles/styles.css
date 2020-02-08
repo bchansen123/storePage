@@ -1,3 +1,28 @@
-.list-group-item {
-  line-height: 2.5;
+.searchIcon {
+  padding-right: 0px;
 }
+
+.align_head {
+  margin: auto;
+  }
+
+.alt_signin {
+  margin-bottom: 20px;
+}
+
+#search_form {
+  padding-right: 0px;
+}
+
+#facebook_color {
+  background-color: navy;
+}
+
+.logo {
+  width: 155px;
+  height: 105px;
+}
+
+/* .has-bg-img {
+  background-image: url("/background.jpg")
+} */
