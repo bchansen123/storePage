@@ -1,6 +1,14 @@
-INSERT INTO songs (category_id, product_name, department_name, image_link, price)
+INSERT INTO products (category_id, product_name, department_name, image_link, item_description, price)
 values
-(1, "Sony Television", "Electronics", "something.jpg", 2000.00),
-(2, "Bannanas", "Food", "this.jpg", 3.99),
-(3, "To Kill a Mockingbird", "Books", "another.jpg", 5.99),
-(1, "Camera", "Electronics", "thing.jpg", 99.99)
+(1, "Sony 65 inch Class OLED", "Electronics", "../images/sonytv.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    sed dolor varius pulvinar eu placerat metus.", 2499.99),
+(2, "Bananas", "Food", "../images/bananas.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    sed dolor varius pulvinar eu placerat metus.", .54),
+(3, "To Kill a Mockingbird", "Books", "../images/To_Kill_a_Mockingbird.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    sed dolor varius pulvinar eu placerat metus.", 5.49),
+(1, "Camera", "Electronics", "../images/cannon.jpeg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    sed dolor varius pulvinar eu placerat metus.", 399.99)
