@@ -10,7 +10,7 @@ values
     Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
     sed dolor varius pulvinar eu placerat metus.", 5.49, true),
 (1, "Camera", "Electronics", "../images/cannon.jpeg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis
     sed dolor varius pulvinar eu placerat metus.", 399.99, true),
 (2, "Oranges", "Food", "../images/oranges.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
@@ -36,9 +36,9 @@ values
 (6, "Oil", "Automotive", "../images/oil.jpeg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
     sed dolor varius pulvinar eu placerat metus.", 7.99, false),
--- (3, "1984", "Books", "../images/1984.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
---     Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
---     sed dolor varius pulvinar eu placerat metus.", 5.49, false),
--- (3, "The Iliad and The Odyssey", "Books", "../images/iliad.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
---     Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
---     sed dolor varius pulvinar eu placerat metus.", 10.99, false)
+(3, "1984", "Books", "../images/1984.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    sed dolor varius pulvinar eu placerat metus.", 5.49, false),
+(3, "The Iliad and The Odyssey", "Books", "../images/iliad.jpg", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nunc a sapien eu metus suscipit vehicula. Vivamus sagittis tellus sed luctus convallis. Pellentesque a turpis 
+    sed dolor varius pulvinar eu placerat metus.", 10.99, false)

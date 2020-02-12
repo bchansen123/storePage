@@ -1,3 +1,4 @@
+{{!-- Individual item container --}}
 <div class="container">
     <div class="tile is-ancestor">
         <div class="tile is-parent is-3">
@@ -136,7 +137,6 @@
 </div>
 </div>
 
-
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
@@ -147,11 +147,10 @@
     var round_tax = tax.toFixed(2);
     var total = ({{ price }} * .07) + {{ price }};
     var round_total = total.toFixed(2);
-    console.log(total);
     document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
     document.getElementById("total").innerHTML = "Total Due: $" + round_total;
 
-//
+//Checkout modal
     $("#buy_now").click(function () {
         $(".buy_now_modal").addClass("is-active");
     });
@@ -160,7 +159,7 @@
         $(".buy_now_modal").removeClass("is-active");
     });
 
-//Submit Purchase
+//Submit Purchase Modal
     $("#submit_purchase").on("click", function () {
         $(".purchase_complete").addClass("is-active");
         $(".buy_now_modal").removeClass("is-active");
