@@ -1,32 +1,6 @@
 {{!-- Individual item container --}}
 <div class="container">
     <div class="tile is-ancestor">
-
-    <div class="tile is-vertical is-12">
-        <div class="tile">
-            <div class="tile is-parent">
-            <article class="tile is-child">
-            <figure class="item_image">
-                <img src="{{image_link}}" width="500px">
-            </figure>
-            </article>
-        </div>
-        <div class="tile is-parent is-vertical">
-            <article class="tile is-child">
-            <h2 class="is-size-3">{{product_name}}</h2>
-            <h3 class="price is-size-4">Price: ${{price}}</h3>
-            </article>
-            <hr>
-            <article class="tile is-child">
-            <p>{{item_description}}</p>
-                <button class="button cart_button" type="submit" value="AddCart">Add to cart</button>
-                <button class="button addAlert isStatic" type="submit" value="Added">Added!</button>
-            </article>
-        </div>
-        </div>
-    </div>
-  </div>
-
         <div class="tile is-parent is-3">
             <div class="tile is-child">
                 <img src={{image}} width="300px">
@@ -169,7 +143,6 @@
 
 <script>
 
-
     var tax = ({{price}} * .07);
     var round_tax = tax.toFixed(2);
     var total = ({{ price }} * .07) + {{ price }};
@@ -197,6 +170,3 @@
     });
 
 </script>
-
-</script>
-
