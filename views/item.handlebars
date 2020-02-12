@@ -19,7 +19,7 @@
                 <div class="column is-10"></div>
                 <div class="column is-2">
                     <div class="field">
-                        <button class="button is-link">Add to Cart</button>
+                        <button class="button is-link" id="buy_now">Buy It Now</button>
                     </div>
                 </div>
             </div>
@@ -27,10 +27,147 @@
     </div>
 </div>
 
+{{!-- Buy Now modal --}}
+<div class="modal buy_now_modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-size-3 has-text-weight-bold">Buy It Now</p>
+            <button class="delete" id="cancel_purchase" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="tile is-ancestor box">
+                <div class="tile is-12">
+                    <div class="tile is-parent">
+                        <div class="tile is-child is-3">
+                            <img src={{image}} width="125px">
+                        </div>
+                        <div class="tile is-child">
+                            <p class="title is-size-4 is-2">{{name}}</p>
+                            <p class="price is-size-6">Price: ${{price}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-ancestor box">
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child">
+                        <p>Email</p>
+                        <div class="field">
+                            <input class="input is-link" type="text" id="new_email" placeholder="Email..">
+                        </div>
+                        <div class="columns">
+                            <div class="column is-6">
+                                <p>First Name</p>
+                                <div class="field">
+                                    <input class="input is-link" type="text" id="first_name" placeholder="First Name..">
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <p>Last Name</p>
+                                <div class="field">
+                                    <input class="input is-link" type="text" id="last_name" placeholder="Last Name..">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <p>Address</p>
+                            <input class="input is-link" type="text" id="new_address" placeholder="Address..">
+                        </div>
+                        <div class="columns">
+                            <div class="column is-4">
+                                <p>City</p>
+                                <input class="input is-link" type="text" id="new_city" placeholder="City..">
+                            </div>
+                            <div class="column is-4">
+                                <p>State</p>
+                                <input class="input is-link" type="text" id="new_state" placeholder="State..">
+                            </div>
+                            <div class="column is-4">
+                                <p>Zip Code</p>
+                                <input class="input is-link" type="text" id="new_zip_code" placeholder="Zip Code..">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="columns">
+                            <div class="column is-5">
+                                <div class="column is-12" id="subtotal">Subtotal: ${{price}}</div>
+                                <div class="column is-12" id="tax"></div>
+                                <hr id="total_separator">
+                                <div class="column is-12 has-text-weight-bold" id="total"></div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column is-9"></div>
+                            <div class="column is-3 has-text-right">
+                                <button class="button is-link" id="submit_purchase">Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{{!-- Purchase complete modal --}}
+<div class="modal purchase_complete">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-size-3 has-text-weight-bold">Thank you for your purchase!</p>
+            <button class="delete" id="close_purchase" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="tile is-ancestor box">
+                <div class="tile is-12">
+                    <div class="tile is-parent">
+                        <div class="is-child">
+                            <p class="email_sub"></p>
+                            <p class="first_sub"></p>
+                            <p class="last_sub"></p>
+                            <p class="address_sub"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</div>
+
+
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
 <script>
+
+    var tax = ({{price}} * .07);
+    var round_tax = tax.toFixed(2);
+    var total = ({{ price }} * .07) + {{ price }};
+    var round_total = total.toFixed(2);
+    console.log(total);
+    document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
+    document.getElementById("total").innerHTML = "Total Due: $" + round_total;
+
+//
+    $("#buy_now").click(function () {
+        $(".buy_now_modal").addClass("is-active");
+    });
+
+    $("#cancel_purchase").click(function () {
+        $(".buy_now_modal").removeClass("is-active");
+    });
+
+//Submit Purchase
+    $("#submit_purchase").on("click", function () {
+        $(".purchase_complete").addClass("is-active");
+        $(".buy_now_modal").removeClass("is-active");
+    });
+
+    $("#close_purchase").click(function () {
+        $(".purchase_complete").removeClass("is-active");
+    });
 
 </script>
