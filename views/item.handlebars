@@ -1,31 +1,6 @@
+{{!-- Individual item container --}}
 <div class="container">
     <div class="tile is-ancestor">
-
-    <div class="tile is-vertical is-12">
-        <div class="tile">
-            <div class="tile is-parent">
-            <article class="tile is-child">
-            <figure class="item_image">
-                <img src="{{image_link}}" width="500px">
-            </figure>
-            </article>
-        </div>
-        <div class="tile is-parent is-vertical">
-            <article class="tile is-child">
-            <h2 class="is-size-3">{{product_name}}</h2>
-            <h3 class="price is-size-4">Price: ${{price}}</h3>
-            </article>
-            <hr>
-            <article class="tile is-child">
-            <p>{{item_description}}</p>
-                <button class="button cart_button" type="submit" value="AddCart">Add to cart</button>
-                <button class="button addAlert isStatic" type="submit" value="Added">Added!</button>
-            </article>
-        </div>
-        </div>
-    </div>
-  </div>
-
         <div class="tile is-parent is-3">
             <div class="tile is-child">
                 <img src={{image}} width="300px">
@@ -162,23 +137,20 @@
 </div>
 </div>
 
-
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
 
 <script>
 
-
     var tax = ({{price}} * .07);
     var round_tax = tax.toFixed(2);
     var total = ({{ price }} * .07) + {{ price }};
     var round_total = total.toFixed(2);
-    console.log(total);
     document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
     document.getElementById("total").innerHTML = "Total Due: $" + round_total;
 
-//
+//Checkout modal
     $("#buy_now").click(function () {
         $(".buy_now_modal").addClass("is-active");
     });
@@ -187,7 +159,7 @@
         $(".buy_now_modal").removeClass("is-active");
     });
 
-//Submit Purchase
+//Submit Purchase Modal
     $("#submit_purchase").on("click", function () {
         $(".purchase_complete").addClass("is-active");
         $(".buy_now_modal").removeClass("is-active");
@@ -198,6 +170,3 @@
     });
 
 </script>
-
-</script>
-
