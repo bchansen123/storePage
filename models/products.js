@@ -46,6 +46,14 @@ module.exports = function(sequelize, Sequelize) {
     highlight: {
       type: Sequelize.BOOLEAN,
       allowNull: false
+
+    },
+
+    active_category: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: 1
+
     }
   });
   return Product;
