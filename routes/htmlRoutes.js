@@ -2,7 +2,13 @@ var db = require("../models");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    res.render("index");
+    db.Product.findAll({raw: true}).then(function(dbProduct){
+      var hbsObject = {
+        products: dbProduct
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    });
   });
 
   app.get("/item/:id", function (req, res) {
@@ -11,7 +17,8 @@ module.exports = function (app) {
         name: dbProduct.product_name,
         image: dbProduct.image_link,
         detail: dbProduct.item_description,
-        price: dbProduct.price
+        price: dbProduct.price,
+        highlight: dbProduct.highlight
       });
     });
   });
