@@ -65,11 +65,6 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.DECIMAL(6,2),
       allowNull: false,
       isDecimal: true
-    },
-
-    highlight: {
-      type: Sequelize.BOOLEAN,
-      allowNull: false
     }
   });
   return Product;
