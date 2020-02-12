@@ -10,6 +10,11 @@
   margin-bottom: 20px;
 }
 
+.logo {
+  width: 155px;
+  height: 105px;
+}
+
 #search_form {
   padding-right: 0px;
 }
@@ -18,9 +23,17 @@
   background-color: navy;
 }
 
-.logo {
-  width: 155px;
-  height: 105px;
+#subtotal {
+  padding-bottom: 0px;
+}
+
+#tax {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+#total_separator {
+  margin: 5px;
 }
 
 /* .has-bg-img {

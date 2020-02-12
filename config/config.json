@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "process.env.password",
+    "password": "5iQ7Pp9Z$",
     "database": "storefront_db",
     "host": "localhost",
     "port": 3306,
