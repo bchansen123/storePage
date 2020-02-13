@@ -147,10 +147,13 @@
     var round_tax = tax.toFixed(2);
     var total = ({{ price }} * .07) + {{ price }};
     var round_total = total.toFixed(2);
+
+    document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
+    document.getElementById("total").innerHTML = "Total Due: $" + round_total;
+    console.log(total);
     document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
     document.getElementById("total").innerHTML = "Total Due: $" + round_total;
 
-//Checkout modal
     $("#buy_now").click(function () {
         $(".buy_now_modal").addClass("is-active");
     });
@@ -158,6 +161,7 @@
     $("#cancel_purchase").click(function () {
         $(".buy_now_modal").removeClass("is-active");
     });
+
 
 //Submit Purchase Modal
     $("#submit_purchase").on("click", function () {
@@ -168,5 +172,4 @@
     $("#close_purchase").click(function () {
         $(".purchase_complete").removeClass("is-active");
     });
-
 </script>
