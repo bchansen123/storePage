@@ -70,15 +70,6 @@ module.exports = function (app) {
       // console.log(dbProduct)
       res.render("items", hbsObject);
     });
-
-    db.Product.findAll({raw: true}).then(function(dbProduct){
-      var hbsObject = {
-        products: dbProduct
-      };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
-    });
-
   });
 
   app.get("/item/:id", function (req, res) {
