@@ -5,9 +5,9 @@
             <div class="column is-12">
                 <div class="tile is-child">
                     <div class="columns">
-                        <div class="column is-4">
+                        <div class="column is-3 images">
                             <a href="/item/{{id}}">
-                                <img src={{image_link}} width="300px">
+                                <img src={{image_link}} alt="{{product_name}}" class="items_page">
                             </a>
                         </div>
                         <div class="column is-6">
@@ -19,10 +19,9 @@
                                 <p class="subtitle">{{item_description}}</p>
                             </a>
                         </div>
-                        <div class="column is-2">
-                            <div class="level">
-                                <p class="level-item subtitle is-right is-size-4">${{price}} ea.</p>
-                            </div>
+                        <div class="column is-3" style="text-align: right;">
+                            <div class="is-size-4">${{price}} ea.</div>
+                            <button class="button is-link is-medium" id="add_to_cart">Add to Cart</button>
                         </div>
                     </div>
                 </div>
