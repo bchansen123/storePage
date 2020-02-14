@@ -1,4 +1,6 @@
 var db = require("../models");
+var Sequelize = require("sequelize");
+
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
@@ -85,6 +87,26 @@ module.exports = function (app) {
       });
     });
   });
+
+  app.get("/search/:item?", function(req, res) {
+    if(req.params.item) {
+      db.Product.findAll({
+        where: {
+          product_name: {
+            [Sequelize.Op.like]: "%" + req.params.item + "%"
+          }
+        },  
+        raw: true
+      }).then(function (dbProduct) {
+        var hbsObject = {
+          products: dbProduct
+        };
+        console.log(dbProduct)
+        res.render("items", hbsObject);
+      });
+      };
+    });
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
