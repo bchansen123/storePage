@@ -1,6 +1,9 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var stripe = require("stripe")("pk_test_uvD7Vwa9KENkoMIjcEK73ucs00E5DeaD4r");
+var stripe = require("stripe")("sk_test_SAFuidtsHoMnOKzsSLQpuJyO00OpnZI1xK");
+
 
 var db = require("./models");
 
@@ -27,6 +30,25 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
+
+//Stripe
+// const stripe = require('stripe')('sk_test_SAFuidtsHoMnOKzsSLQpuJyO00OpnZI1xK');
+
+(async () => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [{
+      name: '',
+      description: '',
+      images: [''],
+      amount: 500,
+      currency: 'usd',
+      quantity: 1,
+    }],
+    success_url: 'main.handlebars',
+    cancel_url: 'https://example.com/cancel',
+  });
+})();
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
