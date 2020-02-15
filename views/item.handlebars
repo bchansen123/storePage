@@ -1,3 +1,4 @@
+<script src="https://js.stripe.com/v3/"></script>
 {{!-- Individual item container --}}
 <div class="container">
     <div class="tile is-ancestor">
@@ -57,68 +58,123 @@
                     </div>
                 </div>
                 {{!-- </div> --}}
+
+
             </div>
             <div class="tile is-ancestor box">
                 <div class="tile is-parent is-vertical">
                     <div class="tile is-child">
-                        <p>Email</p>
-                        <div class="field">
-                            <input class="input is-link" type="text" id="new_email" placeholder="Email..">
-                        </div>
-                        <div class="columns">
-                            <div class="column is-6">
-                                <p>First Name</p>
-                                <div class="field">
-                                    <input class="input is-link" type="text" id="first_name" placeholder="First Name..">
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <p>Last Name</p>
-                                <div class="field">
-                                    <input class="input is-link" type="text" id="last_name" placeholder="Last Name..">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <p>Address</p>
-                            <input class="input is-link" type="text" id="new_address" placeholder="Address..">
-                        </div>
-                        <div class="columns">
-                            <div class="column is-4">
-                                <p>City</p>
-                                <input class="input is-link" type="text" id="new_city" placeholder="City..">
-                            </div>
-                            <div class="column is-4">
-                                <p>State</p>
-                                <input class="input is-link" type="text" id="new_state" placeholder="State..">
-                            </div>
-                            <div class="column is-4">
-                                <p>Zip Code</p>
-                                <input class="input is-link" type="text" id="new_zip_code" placeholder="Zip Code..">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="columns">
-                            <div class="column is-5">
-                                <div class="column is-12" id="subtotal">Subtotal: ${{price}}</div>
-                                <div class="column is-12" id="tax"></div>
-                                <hr id="total_separator">
-                                <div class="column is-12 has-text-weight-bold" id="total"></div>
-                            </div>
-                        </div>
-                        <div class="columns">
-                            <div class="column is-9"></div>
-                            <div class="column is-3 has-text-right">
-                                <button class="button is-link" id="submit_purchase">Purchase</button>
-                            </div>
-                        </div>
+                        <script src="https://js.stripe.com/v3/"></script>
+
                     </div>
                 </div>
             </div>
-        </section>
+            <hr>
+            <div class="columns">
+                <div class="column is-5">
+                    <div class="column is-12" id="subtotal">Subtotal: ${{ price }}</div>
+                    <div class="column is-12" id="tax"></div>
+                    <hr id="total_separator">
+                    <div class="column is-12 has-text-weight-bold" id="total"></div>
+                </div>
+            </div>
+
+            <form action="/charge" method="post" id="payment-form">
+                <div class="form-row">
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                </div>
+
+                
+            </form>
+
+            <script>
+                // Create a Stripe client.
+                var stripe = Stripe('pk_test_uvD7Vwa9KENkoMIjcEK73ucs00E5DeaD4r');
+
+                // Create an instance of Elements.
+                var elements = stripe.elements();
+
+                // Custom styling can be passed to options when creating an Element.
+                // (Note that this demo uses a wider set of styles than the guide below.)
+                var style = {
+                    base: {
+                        color: '#32325d',
+                        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                        fontSmoothing: 'antialiased',
+                        fontSize: '16px',
+                        '::placeholder': {
+                            color: '#aab7c4'
+                        }
+                    },
+                    invalid: {
+                        color: '#fa755a',
+                        iconColor: '#fa755a'
+                    }
+                };
+
+                // Create an instance of the card Element.
+                var card = elements.create('card', { style: style });
+
+                // Add an instance of the card Element into the `card-element` <div>.
+                card.mount('#card-element');
+
+                // Handle real-time validation errors from the card Element.
+                card.addEventListener('change', function (event) {
+                    var displayError = document.getElementById('card-errors');
+                    if (event.error) {
+                        displayError.textContent = event.error.message;
+                    } else {
+                        displayError.textContent = '';
+                    }
+                });
+
+                // Handle form submission.
+                var form = document.getElementById('payment-form');
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    stripe.createToken(card).then(function (result) {
+                        if (result.error) {
+                            // Inform the user if there was an error.
+                            var errorElement = document.getElementById('card-errors');
+                            errorElement.textContent = result.error.message;
+                        } else {
+                            // Send the token to your server.
+                            stripeTokenHandler(result.token);
+                        }
+                    });
+                });
+
+                // Submit the form with the token ID.
+                function stripeTokenHandler(token) {
+                    // Insert the token ID into the form so it gets submitted to the server
+                    var form = document.getElementById('payment-form');
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', token.id);
+                    form.appendChild(hiddenInput);
+
+                    // Submit the form
+                    form.submit();
+                }
+            </script>
+            <div class="columns">
+                <div class="column is-9"></div>
+                <div class="column is-3 has-text-right">
+                    <button class="button is-link" id="submit_purchase">Purchase</button>
+                </div>
+            </div>
     </div>
 </div>
-
 {{!-- Purchase complete modal --}}
 <div class="modal purchase_complete">
     <div class="modal-background"></div>
@@ -142,6 +198,9 @@
             </div>
         </section>
     </div>
+</div>
+</div>
+</section>
 </div>
 </div>
 
