@@ -25,14 +25,6 @@
                     </div>
                 </div>
             </div>
-            {{!-- <div class="columns is-right">
-                <div class="column is-10"></div>
-                <div class="column is-2">
-                    <div class="field">
-                        <button class="button is-link" id="buy_now">Buy It Now</button>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>
@@ -47,7 +39,6 @@
         </header>
         <section class="modal-card-body">
             <div class="tile is-ancestor box">
-                {{!-- <div class="tile is-12"> --}}
                 <div class="tile is-parent">
                     <div class="tile is-child is-3 images">
                         <img src={{image}} class="items_page">
@@ -57,15 +48,48 @@
                         <p class="price is-size-6">Price: ${{price}}</p>
                     </div>
                 </div>
-                {{!-- </div> --}}
-
-
             </div>
             <div class="tile is-ancestor box">
                 <div class="tile is-parent is-vertical">
                     <div class="tile is-child">
                         <script src="https://js.stripe.com/v3/"></script>
 
+                        <p>Email</p>
+                        <div class="field">
+                            <input class="input is-link" type="text" id="user_email" placeholder="Email..">
+                        </div>
+                        <div class="columns">
+                            <div class="column is-6">
+                                <p>First Name</p>
+                                <div class="field">
+                                    <input class="input is-link" type="text" id="user_first" placeholder="First Name..">
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <p>Last Name</p>
+                                <div class="field">
+                                    <input class="input is-link" type="text" id="user_last" placeholder="Last Name..">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <p>Address</p>
+                            <input class="input is-link" type="text" id="user_address" placeholder="Address..">
+                        </div>
+                        <div class="columns">
+                            <div class="column is-4">
+                                <p>City</p>
+                                <input class="input is-link" type="text" id="user_city" placeholder="City..">
+                            </div>
+                            <div class="column is-4">
+                                <p>State</p>
+                                <input class="input is-link" type="text" id="user_state" placeholder="State..">
+                            </div>
+                            <div class="column is-4">
+                                <p>Zip Code</p>
+                                <input class="input is-link" type="text" id="user_zip" placeholder="Zip Code..">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,7 +106,7 @@
             <form action="/charge" method="post" id="payment-form">
                 <div class="form-row">
                     <label for="card-element">
-                        Credit or debit card
+                        Credit or Debit card:
                     </label>
                     <div id="card-element">
                         <!-- A Stripe Element will be inserted here. -->
@@ -92,7 +116,7 @@
                     <div id="card-errors" role="alert"></div>
                 </div>
 
-                
+
             </form>
 
             <script>
@@ -167,6 +191,7 @@
                     form.submit();
                 }
             </script>
+            <hr>
             <div class="columns">
                 <div class="column is-9"></div>
                 <div class="column is-3 has-text-right">
@@ -188,10 +213,19 @@
                 <div class="tile is-12">
                     <div class="tile is-parent">
                         <div class="is-child">
-                            <p class="email_sub"></p>
-                            <p class="first_sub"></p>
-                            <p class="last_sub"></p>
-                            <p class="address_sub"></p>
+                            <span>
+                                <h1 class="is-size-5">You will receive an email when your item ships!</h1>
+                                <h4 id="email_sub"></h4>
+                            </span>
+                            <hr>
+                            <h1 class="is-size-5">Ship to:</h1>
+                            <span>
+                                <h4 id="name_sub"></h4>
+                            </span>
+                            <span>
+                                <h4 id="address_sub"></h4>
+                                <h4 id="mail_sub"></h4>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -211,9 +245,6 @@
     var total = ({{ price }} * .07) + {{ price }};
     var round_total = total.toFixed(2);
 
-    document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
-    document.getElementById("total").innerHTML = "Total Due: $" + round_total;
-    console.log(total);
     document.getElementById("tax").innerHTML = "Tax at 7%: $" + round_tax;
     document.getElementById("total").innerHTML = "Total Due: $" + round_total;
 

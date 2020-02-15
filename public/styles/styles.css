@@ -11,8 +11,8 @@
 }
 
 .logo {
-  width: 155px;
-  height: 105px;
+  width: 150px;
+  height: 150px;
 }
 
 .images {
@@ -54,10 +54,6 @@
 #total_separator {
   margin: 5px;
 }
-
-/* .has-bg-img {
-  background-image: url("/background.jpg")
-} */
 
 .stripeElement {
   background-color: white;

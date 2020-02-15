@@ -32,7 +32,7 @@ require("./routes/htmlRoutes")(app);
 var syncOptions = { force: false };
 
 //Stripe
-const stripe = require('stripe')('sk_test_SAFuidtsHoMnOKzsSLQpuJyO00OpnZI1xK');
+// const stripe = require('stripe')('sk_test_SAFuidtsHoMnOKzsSLQpuJyO00OpnZI1xK');
 
 (async () => {
   const session = await stripe.checkout.sessions.create({
